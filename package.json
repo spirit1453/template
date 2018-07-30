@@ -1,11 +1,11 @@
 {
-  "name": "{{name}}",
+  "name": "tt",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "build": "babel src/ -d lib/",
-    "task":"gulp",
+    "task": "gulp",
     "lint": "eslint --fix .",
     "test": "jest --coverage"
   },
@@ -23,6 +23,7 @@
   "dependencies": {
     "fs-extra": "^7.0.0",
     "lodash": "^4.17.10",
+    "uuid": "^3.3.2",
     "winston": "^3.0.0"
   },
   "devDependencies": {
