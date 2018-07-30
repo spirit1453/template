@@ -1,14 +1,23 @@
-# dependencies
+#node
 node_modules
-
-# logs
+package-lock.json
 npm-debug.log
+
+#IDE
+.idea
+.vscode
+
+#mac
+.DS_Store
+
+#dev
+dist
+build
+
+#custom
+local
 
 # Nuxt build
 .nuxt
 
-# Nuxt generate
-dist
 
-# Backpack build
-build
