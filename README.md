@@ -1,3 +1,3 @@
 
 # description
-basic bare configration for a node projecrt
+basic bare configration for a node project
