@@ -4,17 +4,35 @@ const inquirer = require('inquirer')
 const fs = require('fs')
 const path = require('path')
 const rootPath = path.resolve(__dirname,'..')
+const childProcess = require('child_process')
 
 inquirer.registerPrompt('checkbox-plus', require('inquirer-checkbox-plus-prompt'))
 
 const {index,npmModule,version} = argv
+const boilerplateFolder = path.resolve(rootPath,'boilerplate')
+
 
 if(!index){
-    const boilerplateFolder = path.resolve(rootPath,'boilerplate')
-    const result = fs.readDirSync(boilerplateFolder)
-    console.log(result)
-
+    const result = fs.readdirSync(boilerplateFolder).filter((ele)=>{
+        return !ele.startsWith('.')
+    })
 }
+const templateFolder = path.resolve(boilerplateFolder,String(index))
+const path2 = path.resolve(templateFolder,'package.json')
+const versionRecent = childProcess.execSync(`
+    npm view ${npmModule} version
+`,{
+    encoding:'utf8'
+}).trim()
+const package = require(path2)
+
+package.dependencies[npmModule] = `^${versionRecent}`
+fs.writeFileSync(path2,JSON.stringify(package,null,2))
+
+console.log('end')
+
+
+
 
 // var fuzzy = require('fuzzy');
 //
