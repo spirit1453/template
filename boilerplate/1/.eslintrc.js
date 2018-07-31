@@ -3,6 +3,10 @@ module.exports = {
         "es6": true,
         node: true
     },
+    "parser": "babel-eslint",
+    "plugins": [
+        "flowtype"
+    ],
     "extends": "eslint:recommended",
     "parserOptions": {
         "ecmaVersion": 2018,
