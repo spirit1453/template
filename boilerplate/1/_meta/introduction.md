@@ -9,7 +9,4 @@
     3. gulp
     4. most used dependency and devDependency like uuid yargs
 
-# directory structure
-    1.The _meta folder store basic meta infomation and will be deleted after
-    downloaded
-    2.local
+
