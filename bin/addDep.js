@@ -11,7 +11,6 @@ inquirer.registerPrompt('checkbox-plus', require('inquirer-checkbox-plus-prompt'
 const {index,npmModule,version} = argv
 const boilerplateFolder = path.resolve(rootPath,'boilerplate')
 
-
 if(!index){
     const result = fs.readdirSync(boilerplateFolder).filter((ele)=>{
         return !ele.startsWith('.')
