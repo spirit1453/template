@@ -8,7 +8,7 @@ const childProcess = require('child_process')
 
 inquirer.registerPrompt('checkbox-plus', require('inquirer-checkbox-plus-prompt'))
 
-const {index,npmModule,version} = argv
+const {index,npmModule,version,D} = argv
 const boilerplateFolder = path.resolve(rootPath,'boilerplate')
 
 if(!index){
@@ -25,8 +25,43 @@ const versionRecent = childProcess.execSync(`
 }).trim()
 const package = require(path2)
 
-package.dependencies[npmModule] = `^${versionRecent}`
-fs.writeFileSync(path2,JSON.stringify(package,null,2))
+let field
+if(D){
+    field = 'devDependencies'
+}else{
+    field = 'dependencies'
+}
+package[field][npmModule] = `^${versionRecent}`
+
+function f(obj){
+    const result = {}
+
+    for(let ele of Object.keys(obj).sort()){
+        const innerEle =  obj[ele]
+
+        if(typeof innerEle === 'object'){
+            if(Array.isArray(innerEle)){
+                result[ele]  = innerEle.sort().map(ele=>{
+                    let result
+                    if(typeof ele === 'object'){
+                        result = f(ele)
+                    }else{
+                        result = ele
+                    }
+                    return result
+                })
+            }else{
+                result[ele] = f(innerEle)
+            }
+        }else{
+            result[ele] = innerEle
+        }
+
+    }
+    return result
+}
+
+fs.writeFileSync(path2,JSON.stringify(f(package),null,2))
 
 console.log('end')
 
