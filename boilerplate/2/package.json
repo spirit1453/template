@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "npm run lint && jest --coverage"
   },
   "dependencies": {
     "prop-types": "^15.6.2",
