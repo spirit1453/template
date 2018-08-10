@@ -8,10 +8,12 @@ module.exports = {
     "parser": "babel-eslint",
     "plugins": [
         "flowtype",
+        "react",
         "jest"
     ],
     "extends": [
         "eslint:recommended",
+        "plugin:react/recommended"
     ],
     "parserOptions": {
         "ecmaVersion": 2018,
@@ -22,6 +24,7 @@ module.exports = {
         }
     },
     "rules": {
+        "react/prop-types":0,
         "no-inner-declarations": 0,
         "consistent-return": 1,
         "no-proto": 1,
@@ -85,7 +88,6 @@ module.exports = {
         "no-new-require": 2,
         "no-path-concat": 2,
         "no-confusing-arrow": 2,
-        "arrow-body-style": 2,
         "no-useless-computed-key": 2,
         "no-duplicate-imports": 2,
         "radix": [2, "as-needed"],
