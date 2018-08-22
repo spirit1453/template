@@ -34,10 +34,11 @@ for(let key in standard){
     console.log(JSON.stringify(answer, null, '  '));
     const {index} = answer
     const source = path.resolve(boilerplateFolder,index)
-    const destinaiton = path.resolve(exampleFolder,index)
+    const destination = path.resolve(exampleFolder,index)
 
-    fse.ensureDirSync(destinaiton)
-    fse.copySync(source,destinaiton)
+    fse.ensureDirSync(destination)
+    if()
+    fse.copySync(source,destination)
     console.log('end')
 
 })()
