@@ -33,7 +33,7 @@
   },
   "homepage": "",
   "keywords": [],
-  "license": "ISC",
+  "license": "MIT",
   "main": "index.js",
   "name": "{{name}}",
   "repository": {
@@ -46,6 +46,7 @@
     "doc": "esdoc && open ./docs/index.html",
     "lint": "eslint --fix .",
     "precommit": "npm test",
+    "preinstall": "node bin/preinstall",
     "prepush": "npm test",
     "start": "",
     "task": "gulp",
