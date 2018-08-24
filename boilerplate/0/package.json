@@ -40,7 +40,7 @@
   "scripts": {
     "build": "babel src/ -d lib/",
     "dev": "",
-    "doc": "esdoc && open ./docs/index.html",
+    "doc": "esdoc && open ./local/docs/index.html",
     "lint": "eslint --fix .",
     "jest":"jest --coverage",
     "precommit": "npm test",
