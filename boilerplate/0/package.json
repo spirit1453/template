@@ -5,11 +5,7 @@
     "url": ""
   },
   "dependencies": {
-    "debug": "^3.1.0",
-    "fs-extra": "^7.0.0",
-    "lodash": "^4.17.10",
-    "uuid": "^3.3.2",
-    "winston": "^3.0.0"
+    "@ys/common_dependency": "git+https://github.com/spirit1453/codebase.git#common_dependency"
   },
   "description": "",
   "devDependencies": {
@@ -46,6 +42,7 @@
     "dev": "",
     "doc": "esdoc && open ./docs/index.html",
     "lint": "eslint --fix .",
+    "jest":"jest --coverage",
     "precommit": "npm test",
     "preinstall": "node bin/preinstall",
     "prepush": "npm test",
