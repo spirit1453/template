@@ -7,7 +7,7 @@
   "dependencies": {
     "@ys/common_dependency": "git+https://github.com/spirit1453/codebase.git#common_dependency"
   },
-  "description": "",
+  "description": "node",
   "devDependencies": {
     "@ys/eslint-config-strict": "git+https://github.com/spirit1453/codebase.git#strict_eslint",
     "babel-cli": "^6.26.0",
@@ -40,6 +40,7 @@
   },
   "scripts": {
     "build": "babel src/ -d lib/",
+    "coverage":"node bin/coverage",
     "dev": "",
     "doc": "esdoc && open ./local/docs/index.html",
     "lint": "eslint --fix .",
