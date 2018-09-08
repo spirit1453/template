@@ -8,7 +8,8 @@
     "task": "gulp",
     "lint": "eslint --fix .",
     "test": "jest --coverage",
-    "dev": "flow"
+    "dev": "flow",
+    "sync": "node bin/sync"
   },
   "repository": {
     "type": "git",
@@ -22,7 +23,7 @@
   },
   "homepage": "",
   "dependencies": {
-    "@ys/collection": "git+https://github.com/spirit1453/codebase.git#js_collection",
+    "@ys/collection": "git+https://github.com/spirit1453/node_collection.git#publish",
     "fuzzy": "^0.1.3"
   },
   "devDependencies": {
