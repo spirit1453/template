@@ -3,70 +3,66 @@ const {argv} = yargs
 const inquirer = require('inquirer')
 const fs = require('fs')
 const path = require('path')
-const rootPath = path.resolve(__dirname,'..')
+const rootPath = path.resolve(__dirname, '..')
 const childProcess = require('child_process')
 
 inquirer.registerPrompt('checkbox-plus', require('inquirer-checkbox-plus-prompt'))
 
-const {index,npmModule,version,D} = argv
-const boilerplateFolder = path.resolve(rootPath,'boilerplate')
+const {index, npmModule, version, D} = argv
+const boilerplateFolder = path.resolve(rootPath, 'boilerplate')
 
-if(!index){
-    const result = fs.readdirSync(boilerplateFolder).filter((ele)=>{
-        return !ele.startsWith('.')
-    })
+if (!index) {
+  const result = fs.readdirSync(boilerplateFolder).filter((ele) => {
+    return !ele.startsWith('.')
+  })
 }
-const templateFolder = path.resolve(boilerplateFolder,String(index))
-const path2 = path.resolve(templateFolder,'package.json')
+const templateFolder = path.resolve(boilerplateFolder, String(index))
+const path2 = path.resolve(templateFolder, 'package.json')
 const versionRecent = childProcess.execSync(`
     npm view ${npmModule} version
-`,{
-    encoding:'utf8'
+`, {
+  encoding: 'utf8'
 }).trim()
-const package = require(path2)
+const packageObj = require(path2)
 
 let field
-if(D){
-    field = 'devDependencies'
-}else{
-    field = 'dependencies'
+if (D) {
+  field = 'devDependencies'
+} else {
+  field = 'dependencies'
 }
-package[field][npmModule] = `^${versionRecent}`
+packageObj[field][npmModule] = `^${versionRecent}`
 
-function f(obj){
-    const result = {}
+function f (obj) {
+  const result = {}
 
-    for(let ele of Object.keys(obj).sort()){
-        const innerEle =  obj[ele]
+  for (let ele of Object.keys(obj).sort()) {
+    const innerEle = obj[ele]
 
-        if(typeof innerEle === 'object'){
-            if(Array.isArray(innerEle)){
-                result[ele]  = innerEle.sort().map(ele=>{
-                    let result
-                    if(typeof ele === 'object'){
-                        result = f(ele)
-                    }else{
-                        result = ele
-                    }
-                    return result
-                })
-            }else{
-                result[ele] = f(innerEle)
-            }
-        }else{
-            result[ele] = innerEle
-        }
-
+    if (typeof innerEle === 'object') {
+      if (Array.isArray(innerEle)) {
+        result[ele] = innerEle.sort().map(ele => {
+          let result
+          if (typeof ele === 'object') {
+            result = f(ele)
+          } else {
+            result = ele
+          }
+          return result
+        })
+      } else {
+        result[ele] = f(innerEle)
+      }
+    } else {
+      result[ele] = innerEle
     }
-    return result
+  }
+  return result
 }
 
-fs.writeFileSync(path2,JSON.stringify(f(package),null,2))
+fs.writeFileSync(path2, JSON.stringify(f(packageObj), null, 2))
 
 console.log('end')
-
-
-
 
 // var fuzzy = require('fuzzy');
 //

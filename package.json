@@ -9,7 +9,8 @@
     "lint": "eslint --fix .",
     "test": "jest --coverage",
     "dev": "flow",
-    "sync": "node bin/sync"
+    "sync": "node bin/sync",
+    "postinstall": "node bin/postinstall"
   },
   "repository": {
     "type": "git",
@@ -27,12 +28,14 @@
     "fuzzy": "^0.1.3"
   },
   "devDependencies": {
+    "@ys/eslint-config-rn": "git+https://github.com/spirit1453/codebase.git#react_native_eslint",
     "@ys/eslint-config-strict": "git+https://github.com/spirit1453/codebase.git#strict_eslint",
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.2.6",
     "babel-preset-flow": "^6.23.0",
     "eslint": "^5.2.0",
     "eslint-plugin-flowtype": "^2.50.0",
+    "eslint-plugin-html": "^4.0.5",
     "flow-remove-types": "^1.2.3",
     "gulp": "^3.9.1",
     "handlebars": "^4.0.11",
