@@ -12,21 +12,15 @@
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore ."
   },
   "dependencies": {
+    "@ys/collection": "github:spirit1453/node_collection#publish",
     "axios": "^0.16.2",
-    "cross-env": "^5.0.1",
     "express": "^4.15.3",
+    "iview": "^3.1.1-rc.1",
     "nuxt": "latest",
     "source-map-support": "^0.4.15"
   },
   "devDependencies": {
-    "babel-eslint": "^7.2.3",
-    "eslint": "^4.3.0",
-    "eslint-config-standard": "^10.2.1",
-    "eslint-loader": "^1.9.0",
-    "eslint-plugin-html": "^3.1.1",
-    "eslint-plugin-import": "^2.7.0",
-    "eslint-plugin-node": "^5.1.1",
-    "eslint-plugin-promise": "^3.5.0",
-    "eslint-plugin-standard": "^3.0.1"
+    "@ys/eslint-config-web": "github:spirit1453/codebase#web_eslint",
+    "eslint-loader": "^1.9.0"
   }
 }
